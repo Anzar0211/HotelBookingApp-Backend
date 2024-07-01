@@ -1,9 +1,13 @@
 import express,{Request,Response} from "express"
-import { register } from "../controllers/userController";
+import { getCurrentUserById, register } from "../controllers/userController";
 import {check} from 'express-validator'
+import verifyToken from "../middleware/auth";
 
 
 const router=express.Router()
+
+
+router.get("/me",verifyToken,getCurrentUserById)
 
 router.post('/register',[
     check("firstName","First Name is required").isString(),

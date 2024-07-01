@@ -35,3 +35,10 @@ export const login=async (req:Request,res:Response)=>{
         res.status(500).send("Server Error")
     }
 }
+
+export const logout=(req:Request,res:Response)=>{
+    res.cookie("auth_token","",{
+        expires:new Date(0)
+    })
+    res.send()
+}
