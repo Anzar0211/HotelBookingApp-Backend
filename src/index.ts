@@ -41,6 +41,9 @@ app.use("/api/my-hotels",myHotelRoutes)
 app.use("/api/hotels",hotelRoutes)
 app.use("/api/my-bookings",myBookingsRoutes)
 
+console.log(process.env.NODE_ENV);
+
+
 app.listen(PORT,()=>{
     console.log(`Server running on port: ${PORT}`);
 })
