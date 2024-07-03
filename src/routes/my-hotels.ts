@@ -18,6 +18,7 @@ const upload=multer({
 
 router.post("/",verifyToken,[
     body("name").notEmpty().withMessage("Name is required"),
+    body("address").notEmpty().withMessage("Address is required"),
     body("city").notEmpty().withMessage("City is required"),
     body("country").notEmpty().withMessage("Country is required"),
     body("description").notEmpty().withMessage("Description is required"),

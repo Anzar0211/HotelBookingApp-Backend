@@ -10,7 +10,7 @@ const stripe=new Stripe(process.env.STRIPE_API_KEY as string);
 
 export const fetchAllHotels=async(req:Request,res:Response)=>{
     try {
-    const hotels = await Hotel.find().sort("-lastUpdated");
+    const hotels = await Hotel.find().sort("-lastUpdated").limit(20);
     res.json(hotels);
     } catch (error) {
     console.log("error", error);
