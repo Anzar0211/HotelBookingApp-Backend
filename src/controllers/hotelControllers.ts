@@ -171,9 +171,10 @@ export const handlePayments=async(req:Request,res:Response)=>{
 const constructSearchQuery=(queryParams:any)=>{
     let constructedQuery:any={}
     if(queryParams.destination){
+        const cleanedDestination = queryParams.destination.trim().replace(/\s+/g, ' ');
         constructedQuery.$or=[
-            {city:new RegExp(queryParams.destination,"i")},
-            {country:new RegExp(queryParams.destination,"i")}
+            {city:new RegExp(cleanedDestination,"i")},
+            {country:new RegExp(cleanedDestination,"i")}
         ];
     }
     if(queryParams.adultCount){
