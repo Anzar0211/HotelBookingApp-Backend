@@ -21,7 +21,6 @@ const bookingSchema=new mongoose.Schema<BookingType>({
     },
     childCount:{
         type:Number,
-        required:true
     },
     checkIn:{
         type:Date,

@@ -101,7 +101,8 @@ export const bookHotel=async(req:Request,res:Response)=>{
                 $push:{
                     bookings:newBooking
                 }
-            }
+            },
+            {new:true}
         )
 
         if(!hotel){
@@ -129,9 +130,20 @@ export const handlePayments=async(req:Request,res:Response)=>{
         const paymentIntent=await stripe.paymentIntents.create({
             amount:totalCost*100,
             currency:"inr",
+            description:"Hotel booking for " + hotel.name,
             metadata:{
                 hotelId,
                 userId:req.userId
+            },
+            shipping:{
+                name:"Anzar",
+                address:{
+                    line1:"1234 Main Street",
+                    city:"Bangalore",
+                    state:"Karnataka",
+                    country:"India",
+                    postal_code:"560001"
+                }
             }
         })
         if(!paymentIntent.client_secret){
